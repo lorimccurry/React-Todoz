@@ -1,0 +1,83 @@
+import React from 'react'
+import { shallow } from 'enzyme'
+import { shallowToJson } from 'enzyme-to-json'
+import TodoList from './TodoList'
+import Items from './Items'
+import AddItem from './AddItem'
+import shortid from 'shortid'
+
+describe('TodoList', () => {
+  xit('TodoList snapshot test', () => {
+    const component = shallow(<TodoList />)
+    const tree = shallowToJson(component)
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders AddItem component', () => {
+    const component = shallow(<TodoList />)
+    expect(component.find(AddItem).length).toEqual(1)
+  })
+
+  // test('it renders AddItem component', () => {
+  //   const component = shallow(<TodoList />)
+  //   expect(component.contains(<AddItem />)).toEqual(true)
+  // })
+
+  it('should start with an empty list', () => {
+    const component = shallow(<TodoList />)
+    expect(component.state('items')).toEqual([])
+  })
+
+  it('adds item to the items state', () => {
+    const expected = [
+      {
+        completed: false,
+        id: expect.any(String),
+        text: 'get beer'
+      }
+    ]
+    const component = shallow(<TodoList />)
+    component.instance().handleAddItem('get beer')
+    expect(component.state('items')).toEqual(expected)
+  })
+
+  it('adds an item to the items state', () => {
+    const component = shallow(<TodoList />)
+    component.instance().handleAddItem('get beer')
+    expect(component.state('items').length).toEqual(1)
+  })
+
+  it('adds multiple items to the items state', () => {
+    const component = shallow(<TodoList />)
+    component.instance().handleAddItem('get beer')
+    component.instance().handleAddItem('eat')
+    component.instance().handleAddItem('sleep')
+    expect(component.state('items').length).toEqual(3)
+  })
+
+  it('renders instruction message when no items', () => {
+    const component = shallow(<TodoList />)
+    expect(component.state('items').length).toEqual(0)
+    expect(component.contains(<p>Add some todoz!</p>)).toEqual(true)
+  })
+
+  it('does not render Items when no items', () => {
+    const component = shallow(<TodoList />)
+    expect(component.find(Items).length).toEqual(0)
+  })
+
+  it('renders Items when items added', () => {
+    const component = shallow(<TodoList />)
+    component.instance().handleAddItem('get beer')
+    expect(component.state('items').length).toEqual(1)
+    expect(component.contains(Items)).toEqual(true)
+  })
+
+  it('passes handleAddItem to AddItem', () => {
+    const component = shallow(<TodoList />)
+    const addItem = component.find(AddItem)
+    const handleAddItem = component.instance().handleAddItem
+    console.log(handleAddItem)
+    expect(addItem.prop('onSubmit').toEqual(handleAddItem))
+  })
+})

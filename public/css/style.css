@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+.page-container {
+  width: 80%;
+  margin: auto;
+  position: relative;
+  padding-top: 80px;
+}
+.tile {
+  display: block;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+.tile img {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
