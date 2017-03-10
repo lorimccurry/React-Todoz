@@ -25,7 +25,7 @@ describe('Item', () => {
     const component = shallow(<Item key={item.id} {...item} />) 
     expect(component.find('li').length).toEqual(1)
     expect(component.find('input[type="checkbox"]').length).toEqual(1)
-    expect(component.find('span.item-text').length).toEqual(1)
+    expect(component.find('p.item-text').length).toEqual(1)
     expect(component.find('button.edit-btn').length).toEqual(1)
     expect(component.find('button.delete-btn').length).toEqual(1)
   })
@@ -38,7 +38,7 @@ describe('Item', () => {
     }
     const component = mount(<Item key={item.id} {...item} />)
     const input = component.find('input[type="checkbox"]')
-    const span = component.find('span.item-text')
+    const span = component.find('.item-text')
     expect(component.prop('text')).toEqual('do the codez')
     expect(span.text()).toEqual('do the codez')
     expect(input.prop('checked')).toEqual(false)

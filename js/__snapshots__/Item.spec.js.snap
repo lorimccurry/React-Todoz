@@ -9,11 +9,11 @@ exports[`Item Item snapshot test 1`] = `
     onKeyDown={[Function]}
     type="checkbox"
   />
-  <span
+  <p
     className="item-text"
   >
     do the codez
-  </span>
+  </p>
   <button
     className="edit-btn"
     onClick={[Function]}

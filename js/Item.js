@@ -10,7 +10,7 @@ function Item (props) {
         onKeyDown={(e) => props.onKeyDown(e, props.id)}
         name='completed'
       />
-      <span className='item-text'>{props.text}</span>
+      <p className='item-text'>{props.text}</p>
       <button onClick={() => props.handleEditID(props.id)} className='edit-btn'>Edit</button>
       <button onClick={() => props.handleDeleteItem(props.id)} className='delete-btn'>Delete</button>
     </li>

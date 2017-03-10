@@ -141,18 +141,6 @@ describe('TodoList deletes', () => {
     expect(component.find('li').length).toEqual(2)
     expect(finalMatchingItemsArr.length).toEqual(0)
   })
-
-  xit('passes handleDeleteItem to Items', () => {
-    const component = mount(<TodoList />)
-    component.instance().handleAddItem('eat')
-    component.instance().handleAddItem('sleep')
-    component.instance().handleAddItem('live')
-    const items = component.find(Items)
-    const handleDeleteItem = component.instance().handleDeleteItem
-    console.log(handleDeleteItem)
-    console.log(items.prop('handleDeleteItem'))
-    expect(items.prop('handleDeleteItem')).toEqual(handleDeleteItem)
-  })
 })
 
 describe('TodoList Edit', () => {
