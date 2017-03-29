@@ -1,10 +1,10 @@
 # React-Todoz
-React, Webpack, Jest, Enzyme. It's a baby photo. But it's cute.
+React, Webpack, Jest, Enzyme. It's cute.
 
 ----
 If you don't already have yarn:
 ```
-$ npm install yarn
+$ npm install -g yarn
 ```
 
 ### Getting going:
